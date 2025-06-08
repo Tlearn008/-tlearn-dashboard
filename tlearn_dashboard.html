@@ -29,10 +29,11 @@
 <body>
   <h1>📊 Tlearn Daily Upload Dashboard</h1>
   <div class="buttons">
-    <a href="https://colab.research.google.com/github/YOUR_USERNAME/tlearn-dashboard/blob/main/Tlearn_Full_Pipeline.ipynb" target="_blank">⚡ Run Tlearn in Colab</a>
+    <a href="https://colab.research.google.com/github/Tlearn008/-tlearn-dashboard/blob/main/Tlearn_Full_Pipeline.ipynb" target="_blank">⚡ Run Tlearn in Colab</a>
     <a href="https://chat.openai.com/g/g-2i9rZPlhP-tlearn" target="_blank">💬 Ask ChatGPT</a>
-    <a href="#" onclick="loadDashboard(); return false;">🔁 Refresh Now</a>
+    <a href="github_dashboard_data.json" target="_blank">📁 View Metadata</a>
   </div>
+
   <table>
     <thead>
       <tr>
@@ -67,8 +68,8 @@
         });
     }
 
-    loadDashboard(); // Initial load
-    setInterval(loadDashboard, 5 * 60 * 1000); // 🔁 Auto-refresh every 5 min
+    loadDashboard();
+    setInterval(loadDashboard, 5 * 60 * 1000); // Refresh every 5 min
   </script>
 </body>
 </html>
