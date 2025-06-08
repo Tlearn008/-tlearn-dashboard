@@ -1,0 +1,35 @@
+[
+  {
+    "date": "2025-06-05",
+    "concept": "DNA Replication",
+    "script": "DNA replication is the process of producing two identical replicas from one original DNA molecule...",
+    "status": "uploaded",
+    "short_link": "https://youtu.be/example123",
+    "tags": ["NEET", "biology", "DNA", "3D", "shorts"],
+    "title": "DNA Replication in 3D - NEET Short",
+    "description": "Learn how DNA replication works with this 3D animated short designed for NEET aspirants.",
+    "thumbnail_prompt": "A 3D DNA strand splitting with vibrant animation and scientific symbols"
+  },
+  {
+    "date": "2025-06-05",
+    "concept": "Periodic Table Trends",
+    "script": "Periodic table trends explain how atomic size, electronegativity, and ionization energy change...",
+    "status": "pending",
+    "short_link": "",
+    "tags": ["NEET", "chemistry", "periodic table", "3D"],
+    "title": "",
+    "description": "",
+    "thumbnail_prompt": "Colorful periodic table with animated arrows showing trends in atomic radius"
+  },
+  {
+    "date": "2025-06-05",
+    "concept": "Laws of Motion",
+    "script": "Newton's three laws of motion describe the relationship between a body and the forces acting on it...",
+    "status": "failed",
+    "short_link": "",
+    "tags": ["NEET", "physics", "motion", "newton"],
+    "title": "",
+    "description": "",
+    "thumbnail_prompt": "3D animated motion of a ball with Newton sitting under a tree, apple falling"
+  }
+]
