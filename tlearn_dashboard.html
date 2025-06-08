@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tlearn Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; background: #f0f0f0; padding: 20px; }
+    h1 { color: #333; font-size: 24px; }
+    table { width: 100%; border-collapse: collapse; background: #fff; margin-top: 20px; font-size: 14px; }
+    th, td { padding: 10px; border: 1px solid #ccc; word-break: break-word; }
+    th { background: #eee; }
+    tr:hover { background: #f9f9f9; }
+    .status-uploaded { color: green; font-weight: bold; }
+    .status-pending { color: orange; }
+    .status-failed { color: red; }
+    .buttons { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .buttons a {
+      flex: 1 1 auto;
+      min-width: 150px;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .buttons a:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  <h1>📊 Tlearn Daily Upload Dashboard</h1>
+  <div class="buttons">
+    <a href="https://colab.research.google.com/github/Tlearn008/-tlearn-dashboard/blob/main/Tlearn_Full_Pipeline.ipynb" target="_blank">⚡ Run Tlearn in Colab</a>
+    <a href="https://chat.openai.com/g/g-2i9rZPlhP-tlearn" target="_blank">💬 Ask ChatGPT</a>
+    <a href="github_dashboard_data.json" target="_blank">📁 View Metadata</a>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Concept</th>
+        <th>Status</th>
+        <th>Video Link</th>
+        <th>Tags</th>
+      </tr>
+    </thead>
+    <tbody id="dashboard-data"></tbody>
+  </table>
+  <script>
+    function loadDashboard() {
+      fetch("github_dashboard_data.json")
+        .then(res => res.json())
+        .then(data => {
+          const table = document.getElementById("dashboard-data");
+          table.innerHTML = "";
+          data.forEach(entry => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${entry.date || ""}</td>
+              <td>${entry.concept || ""}</td>
+              <td class="status-${entry.status}">${entry.status}</td>
+              <td><a href="${entry.short_link}" target="_blank">${entry.short_link}</a></td>
+              <td>${(entry.tags || []).join(", ")}</td>
+            `;
+            table.appendChild(row);
+          });
+        });
+    }
+    loadDashboard();
+    setInterval(loadDashboard, 5 * 60 * 1000);
+  </script>
+</body>
+</html>
