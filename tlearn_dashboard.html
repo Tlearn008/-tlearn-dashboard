@@ -1,0 +1,64 @@
+# Generate a lightweight HTML dashboard template for Tlearn video uploads
+dashboard_html = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tlearn Video Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
+    h1 { color: #333; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ccc; }
+    th { background-color: #f2f2f2; }
+    tr:hover { background-color: #f1f1f1; }
+    .status-uploaded { color: green; font-weight: bold; }
+    .status-pending { color: orange; }
+    .status-failed { color: red; }
+  </style>
+</head>
+<body>
+  <h1>Tlearn Daily Upload Dashboard</h1>
+  <p>This dashboard shows all NEET concept videos generated and uploaded via the Tlearn pipeline.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Concept</th>
+        <th>Status</th>
+        <th>Short Video</th>
+        <th>Tags</th>
+      </tr>
+    </thead>
+    <tbody id="dashboard-data">
+      <!-- Dynamic content loaded via JSON -->
+    </tbody>
+  </table>
+  <script>
+    fetch("github_dashboard_data.json")
+      .then(response => response.json())
+      .then(data => {
+        const table = document.getElementById("dashboard-data");
+        data.forEach(entry => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${entry.date || ""}</td>
+            <td>${entry.concept || ""}</td>
+            <td class="status-${entry.status}">${entry.status}</td>
+            <td><a href="${entry.short_link}" target="_blank">${entry.short_link}</a></td>
+            <td>${(entry.tags || []).join(", ")}</td>
+          `;
+          table.appendChild(row);
+        });
+      });
+  </script>
+</body>
+</html>
+"""
+
+# Save HTML template
+html_path = "/mnt/data/tlearn_dashboard.html"
+with open(html_path, "w") as f:
+    f.write(dashboard_html)
+
+html_path
