@@ -1,0 +1,43 @@
+[
+  {
+    "name": "run_pipeline",
+    "description": "Run the Tlearn video pipeline for a specific NEET subject",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "subject": {
+          "type": "string",
+          "description": "The NEET subject, e.g., Biology, Physics, Chemistry"
+        },
+        "video_type": {
+          "type": "string",
+          "enum": ["short", "long"],
+          "description": "The video format: short or long"
+        }
+      },
+      "required": ["subject", "video_type"]
+    }
+  },
+  {
+    "name": "upload_to_youtube",
+    "description": "Upload a generated video to YouTube using metadata",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "video_path": {
+          "type": "string",
+          "description": "The path or filename of the video to upload"
+        }
+      },
+      "required": ["video_path"]
+    }
+  },
+  {
+    "name": "sync_dashboard",
+    "description": "Trigger a dashboard metadata sync",
+    "parameters": {
+      "type": "object",
+      "properties": {}
+    }
+  }
+]
